@@ -1,0 +1,16 @@
+{
+  "name": "testing_electron",
+  "version": "1.0.0",
+  "description": "just testing out electron, a package i think that helps make desktop apps",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+    },
+  "author": "Alberto Garcia Vazquez",
+  "license": "ISC",
+  "dependencies": {
+    "electron": "^37.2.6",
+    "resize-img": "^2.0.0",
+    "toastify-js": "^1.12.0"
+  }
+}

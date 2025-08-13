@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Life Tracker</title>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Intro Title */
+    #intro-title {
+      font-family: 'Press Start 2P', cursive;
+      font-size: 24px;
+      color: gold;
+      text-shadow: 0 0 5px #ff0, 0 0 10px #ffb, 0 0 20px #ffd700;
+      animation: coinShine 2s infinite;
+      text-align: center;
+      margin-top: 40px;
+      cursor: pointer;
+      user-select: none;
+    }
+    @keyframes coinShine {
+      0%, 100% { filter: brightness(1); }
+      50% { filter: brightness(1.5); }
+    }
+  </style>
+</head>
+<body>
+  <!-- Intro title -->
+  <div id="intro-title">Life Tracker</div>
+  
+
+  <div id="app" class="hidden">
+    <!-- Top: up to 3 pixel progress circles -->
+    <div id="progress-container"></div>
+
+    <!-- Tasks list -->
+    <div id="task-list"></div>
+
+    <!-- Floating Add (+) -->
+    <button id="add-btn" aria-label="Add">+</button>
+
+    <!-- Add menu -->
+    <div id="add-menu" class="hidden menu">
+      <button id="add-task-btn" class="menu-item">Add Task</button>
+      <button id="add-list-btn" class="menu-item">Add List</button>
+    </div>
+
+    <!-- Add Task form -->
+    <div id="task-form" class="hidden form-container">
+      <h2>Add Task</h2>
+      <label class="label">Name (required)</label>
+      <input type="text" id="task-name" placeholder="Task name" required>
+
+      <label class="label">Due (required)</label>
+      <input type="datetime-local" id="task-due" required>
+
+      <label class="label">List</label>
+      <select id="task-list-select"></select>
+
+      <label class="label">Remind every (optional)</label>
+      <select id="task-reminder">
+        <option value="">None</option>
+        <option value="30">30 minutes</option>
+        <option value="60">1 hour</option>
+        <option value="120">2 hours</option>
+      </select>
+
+      <div class="form-actions">
+        <button id="save-task" class="btn">Save</button>
+        <button id="cancel-task" class="btn btn-ghost">Cancel</button>
+      </div>
+    </div>
+
+    <!-- Add List form -->
+    <div id="list-form" class="hidden form-container">
+      <h2>Add List</h2>
+      <label class="label">Name (required)</label>
+      <input type="text" id="list-name" placeholder="List name" required>
+
+      <label class="label">Color (pick one)</label>
+      <div id="color-options" class="color-grid"></div>
+
+      <div class="form-actions">
+        <button id="save-list" class="btn">Save</button>
+        <button id="cancel-list" class="btn btn-ghost">Cancel</button>
+      </div>
+    </div>
+
+    <!-- Full-screen alert -->
+    <div id="alert-screen" class="hidden">
+      <div id="alert-card" class="alert-card"></div>
+      <button id="alert-done" class="btn alert-btn">Done</button>
+    </div>
+  </div>
+
+  <script src="renderer.js"></script>
+</body>
+</html>
