@@ -5,11 +5,12 @@
   "main": "main.js",
   "scripts": {
     "start": "electron ."
-    },
+  },
   "author": "Alberto Garcia Vazquez",
   "license": "ISC",
   "dependencies": {
     "electron": "^37.2.6",
+    "nes.css": "^2.2.1",
     "resize-img": "^2.0.0",
     "toastify-js": "^1.12.0"
   }

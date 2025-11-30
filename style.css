@@ -12,10 +12,8 @@ body {
   min-height: 100vh;
   width: 100vw;
   font-family: 'Press Start 2P', cursive;
-  background-image: url("images/background.png");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  /* use a plain green background while iterating — removed large bg image */
+  background-color: #2e7d32; /* pleasant dark-ish green */
   color: white;
 }
 
@@ -38,30 +36,10 @@ body {
   100% { background-position: 100% center; }
 }
 
-/* Buttons */
-.btn {
-  font-family: inherit;
-  font-size: 12px;
-  padding: 10px 14px;
-  cursor: pointer;
-  background: #ff4d6d;
-  border: 4px solid #8b0000;
-  color: #fff;
-  image-rendering: pixelated;
-  box-shadow: 0 4px 0 #5a0000, 0 0 0 4px #000 inset;
-}
-.btn:active {
-  transform: translateY(2px);
-  box-shadow: 0 2px 0 #5a0000, 0 0 0 4px #000 inset;
-}
-.btn-ghost {
-  background: rgba(0,0,0,0.6);
-  border: 4px solid #ffffff;
-  box-shadow: 0 4px 0 #777, 0 0 0 4px #000 inset;
-}
+/* NES.css buttons are now used. Custom .btn and .btn-ghost removed to avoid conflicts. */
 
 /* Utility */
-.hidden { display: none !important; }
+.is-hidden { display: none !important; }
 .label { display: block; margin: 12px 0 6px; font-size: 12px; opacity: 0.9; }
 
 /* Menu */
@@ -117,7 +95,7 @@ align-items: flex-end;
   position: relative;
   image-rendering: pixelated;
   border-radius: 12px;                                  /* squircle-ish 8-bit */
-  
+
 }
 .pixel-circle::before, .pixel-circle::after {
   content: "";
@@ -154,24 +132,7 @@ align-items: flex-end;
   position: relative;
   image-rendering: pixelated;
 }
-.pixel-circle::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: 4px; /* More blocky for pixel-art style */
-  z-index: 1;
-  background: var(--ring-gradient, #ff4d6d);
-  /* Alternatively, use a pixel-art SVG/image as background */
-  /* background-image: url("images/pixel-circle.png"); */
-}
-.pixel-circle::after {
-  content: "";
-  position: absolute;
-  inset: 10px;
-  border-radius: 8px;
-  background: transparent;
-  z-index: 2;
-}
+
 .pixel-circle .pct {
   position: absolute;
   inset: 0;
@@ -253,7 +214,7 @@ align-items: flex-end;
   justify-content: center;
   z-index: 10;
 }
-#alert-screen.hidden { display: none !important; }
+#alert-screen.is-hidden { display: none !important; }
 @keyframes flash {
   0%, 50%, 100% { background-color: red; }
   25%, 75% { background-color: darkred; }

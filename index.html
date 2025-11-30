@@ -1,3 +1,4 @@
+<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Life Tracker</title>
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./node_modules/nes.css/css/nes.min.css">
   <link rel="stylesheet" href="style.css">
   <style>
     /* Intro Title */
@@ -30,7 +32,7 @@
   <div id="intro-title">Life Tracker</div>
   
 
-  <div id="app" class="hidden">
+  <div id="app" class="is-hidden">
     <!-- Top: up to 3 pixel progress circles -->
     <div id="progress-container"></div>
 
@@ -38,16 +40,16 @@
     <div id="task-list"></div>
 
     <!-- Floating Add (+) -->
-    <button id="add-btn" aria-label="Add">+</button>
+  <button id="add-btn" class="nes-btn" aria-label="Add">+</button>
 
     <!-- Add menu -->
-    <div id="add-menu" class="hidden menu">
-      <button id="add-task-btn" class="menu-item">Add Task</button>
-      <button id="add-list-btn" class="menu-item">Add List</button>
+    <div id="add-menu" class="is-hidden nes-container with-title">
+      <button id="add-task-btn" class="nes-btn">Add Task</button>
+      <button id="add-list-btn" class="nes-btn">Add List</button>
     </div>
 
     <!-- Add Task form -->
-    <div id="task-form" class="hidden form-container">
+  <div id="task-form" class="is-hidden nes-container is-rounded">
       <h2>Add Task</h2>
       <label class="label">Name (required)</label>
       <input type="text" id="task-name" placeholder="Task name" required>
@@ -67,13 +69,13 @@
       </select>
 
       <div class="form-actions">
-        <button id="save-task" class="btn">Save</button>
-        <button id="cancel-task" class="btn btn-ghost">Cancel</button>
+  <button id="save-task" class="nes-btn is-primary">Save</button>
+  <button id="cancel-task" class="nes-btn">Cancel</button>
       </div>
     </div>
 
     <!-- Add List form -->
-    <div id="list-form" class="hidden form-container">
+  <div id="list-form" class="is-hidden nes-container is-rounded">
       <h2>Add List</h2>
       <label class="label">Name (required)</label>
       <input type="text" id="list-name" placeholder="List name" required>
@@ -82,15 +84,15 @@
       <div id="color-options" class="color-grid"></div>
 
       <div class="form-actions">
-        <button id="save-list" class="btn">Save</button>
-        <button id="cancel-list" class="btn btn-ghost">Cancel</button>
+  <button id="save-list" class="nes-btn is-success">Save</button>
+  <button id="cancel-list" class="nes-btn">Cancel</button>
       </div>
     </div>
 
     <!-- Full-screen alert -->
-    <div id="alert-screen" class="hidden">
+    <div id="alert-screen" class="is-hidden nes-container is-dark">
       <div id="alert-card" class="alert-card"></div>
-      <button id="alert-done" class="btn alert-btn">Done</button>
+      <button id="alert-done" class="nes-btn is-warning">Done</button>
     </div>
   </div>
 

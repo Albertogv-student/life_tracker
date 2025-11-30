@@ -1,10 +1,12 @@
+// script.js
+// NES.css is loaded in index.html via <link>, so remove import here which requires module context
 document.addEventListener('DOMContentLoaded', () => {
   // ---------- Intro Title Click ----------
   const introTitle = document.getElementById('intro-title');
   const appEl = document.getElementById('app');
   introTitle.addEventListener('click', () => {
     introTitle.style.display = 'none';
-    appEl.classList.remove('hidden');
+    appEl.classList.remove('is-hidden');
   });
 
   // ---------- State ----------
@@ -88,8 +90,8 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function closeForms() {
-    taskForm.classList.add('hidden');
-    listForm.classList.add('hidden');
+    taskForm.classList.add('is-hidden');
+    listForm.classList.add('is-hidden');
   }
 
   function genId() {
@@ -181,13 +183,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const dueTasks = tasks.filter(t => !t.completed && new Date(t.due) <= now);
 
     if (dueTasks.length === 0) {
-      alertScreen.classList.add('hidden');
+      alertScreen.classList.add('is-hidden');
       return;
     }
 
     let taskToAlert = dueTasks.find(t => !alertedTaskIds.has(t.id));
     if (!taskToAlert) {
-      alertScreen.classList.add('hidden'); // ensure hide if all already alerted
+      alertScreen.classList.add('is-hidden'); // ensure hide if all already alerted
       return;
     }
 
@@ -195,17 +197,17 @@ document.addEventListener('DOMContentLoaded', () => {
       <h3 style="margin:0 0 10px;">${taskToAlert.name}</h3>
       <div>${formatDT(taskToAlert.due)}</div>
     `;
-    alertScreen.classList.remove('hidden');
+    alertScreen.classList.remove('is-hidden');
     alertedTaskIds.add(taskToAlert.id);
   }
 
   alertDone.addEventListener('click', () => {
-    alertScreen.classList.add('hidden');
+    alertScreen.classList.add('is-hidden');
   });
 
   // ---------- Add menu ----------
   addBtn.addEventListener('click', () => {
-    addMenu.classList.remove('hidden');
+    addMenu.classList.remove('is-hidden');
   });
 
   addTaskBtn.addEventListener('click', () => {
@@ -214,15 +216,15 @@ document.addEventListener('DOMContentLoaded', () => {
     taskNameIn.value = "";
     taskDueIn.value  = "";
     taskReminder.value = "";
-    taskForm.classList.remove('hidden');
-    addMenu.classList.add('hidden');
+    taskForm.classList.remove('is-hidden');
+    addMenu.classList.add('is-hidden');
   });
 
   addListBtn.addEventListener('click', () => {
     listNameIn.value = "";
     buildColorChoices();
-    listForm.classList.remove('hidden');
-    addMenu.classList.add('hidden');
+    listForm.classList.remove('is-hidden');
+    addMenu.classList.add('is-hidden');
   });
 
   saveTaskBtn.addEventListener('click', () => {
