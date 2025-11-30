@@ -4,8 +4,13 @@ document.addEventListener('DOMContentLoaded', () => {
   // ---------- Intro Title Click ----------
   const introTitle = document.getElementById('intro-title');
   const appEl = document.getElementById('app');
+  let _introPinned = false;
   introTitle.addEventListener('click', () => {
-    introTitle.style.display = 'none';
+    if (_introPinned) return; // only move once
+    _introPinned = true;
+    // pin the title to the top and reveal the app
+    introTitle.classList.add('moved-top');
+    document.body.classList.add('intro-pinned');
     appEl.classList.remove('is-hidden');
   });
 

@@ -17,11 +17,15 @@ body {
   color: white;
 }
 
-/* Shimmering Life Tracker intro */
-.life-tracker-title {
-  font-size: 28px;
+/* Shimmering Life Tracker intro (centered overlay -> moves to top on first click) */
+#intro-title {
+  position: fixed;          /* overlay */
+  inset: 0;                 /* fill viewport */
+  display: grid;
+  place-items: center;      /* center the text */
+  z-index: 9998;
+  font-size: 48px;          /* large centered title */
   text-align: center;
-  margin-top: 30px;
   background: linear-gradient(90deg, #fff, #ff4d6d, #fff);
   background-size: 300% auto;
   -webkit-background-clip: text;
@@ -29,6 +33,27 @@ body {
   color: transparent;
   animation: shimmer 2.5s infinite linear;
   text-shadow: 2px 2px 0 #000;
+  cursor: pointer;
+  transition: all 420ms cubic-bezier(.2,.9,.2,1);
+}
+
+/* small, fixed top state after first click */
+#intro-title.moved-top {
+  inset: auto;              /* stop filling viewport */
+  top: 18px;                /* near the top */
+  left: 50%;
+  transform: translateX(-50%);
+  position: fixed;
+  font-size: 16px;
+  z-index: 9999;
+  animation: none;          /* stop shimmer when pinned */
+  text-shadow: 1px 1px 0 #000;
+  pointer-events: none;     /* stop clicks after move */
+}
+
+/* Give the app a small top offset after the intro is pinned so content doesn't sit under it */
+body.intro-pinned {
+  padding-top: 56px;
 }
 
 @keyframes shimmer {
