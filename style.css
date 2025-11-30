@@ -12,8 +12,11 @@ body {
   min-height: 100vh;
   width: 100vw;
   font-family: 'Press Start 2P', cursive;
-  /* use a plain green background while iterating — removed large bg image */
-  background-color: #2e7d32; /* pleasant dark-ish green */
+  /* restore original 8-bit background image */
+  background-image: url("images/background.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   color: white;
 }
 
@@ -105,11 +108,12 @@ z-index: 5;
 }
 
 /* Progress circles */
-#progress-container {
-display: flex;
-gap: 16px;
-margin-bottom: 18px;
-align-items: flex-end;
+#progress-container { margin-bottom: 12px; }
+#progress-inner {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 18px;
+  align-items: flex-end;
 }
 
 
@@ -122,20 +126,23 @@ align-items: flex-end;
   border-radius: 12px;                                  /* squircle-ish 8-bit */
 
 }
-.pixel-circle::before, .pixel-circle::after {
+.pixel-circle::before {
+  /* outer layer: we render the conic-gradient from JS into this element */
   content: "";
   position: absolute;
   inset: 0;
-  box-shadow: 0 0 0 6px var(--ring-color) inset;       /* outer ring */
-  border-radius: 12px;                                  /* squircle-ish 8-bit */
+  border-radius: 12px;
+  z-index: 1;
+  background: var(--ring-gradient, conic-gradient(#ff4d6d, #222));
 }
 .pixel-circle::after {
-  /* inner cut-out to fake a ring */
-  box-shadow:
-    0 0 0 6px var(--ring-color) inset,
-    0 0 0 9999px rgba(0,0,0,0) inset;
-  transform: scale(0.72);
+  /* inner cut-out: sits on top and masks the center */
+  content: "";
+  position: absolute;
+  inset: 10px; /* thickness of the visible ring */
   border-radius: 8px;
+  z-index: 2;
+  background: #000; /* inner fill color — looks good on dark backgrounds */
 }
 .progress-group {
   display: flex;

@@ -20,7 +20,8 @@ document.addEventListener('DOMContentLoaded', () => {
   let alertedTaskIds = new Set(); // avoid re-alerting same overdue task this session
 
   // ---------- Elements ----------
-  const progressContainer = document.getElementById('progress-container');
+  // progress-inner holds the circles — progress-container is the NES wrapper with title
+  const progressContainer = document.getElementById('progress-inner');
   const taskListEl        = document.getElementById('task-list');
 
   const addBtn       = document.getElementById('add-btn');
